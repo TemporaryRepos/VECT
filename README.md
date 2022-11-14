@@ -103,13 +103,13 @@ We provide the source files and jar packages for the project. You can make chang
 ### IV. Directory description
 
 ```markdown
-├── 01JVMS					:  test subjects
-├── 02Benchmarks			:  origin benchmarks
-├── 03results				:  difference report
-├── 04SynthesisHistory  	:  programs generated during synthsizing 
-├── DTJVM					:  Execution Phase Module
-├── JavaTailor				:  Synthesis Phase Module
-├── Main					:  Control Module
-└── sootOutput				:  benchmarks for synthesized
+├── 01JVMS            :  test subjects
+├── 02Benchmarks      :  origin benchmarks
+├── 03results         :  difference report
+├── 04SynthesisHistory:  programs generated during synthsizing 
+├── DTJVM             :  Execution Phase Module
+├── JavaTailor        :  Synthesis Phase Module
+├── Main              :  Control Module
+└── sootOutput        :  benchmarks for synthesized
 ```
 
