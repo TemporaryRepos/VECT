@@ -45,19 +45,14 @@ public class Main {
     public static String packageName = "Bug_triggering_input";
 
     public static int useClustering = CodeClusterHelper.NO_CLUSTER;
-
     public static int selectMethod = SelectBlockHelper.RANDOM_SELECT;
-
     public static boolean useVMOptions = false;
-
     public static boolean addLoopFlag = false; // 添加循环体的方式 选择： all、none
-
-
     public static boolean checksum = true; // 是否使用checksum
 
     public static boolean reshape = true;
 
-    public static long exeTime = 60 * 60 * 9;
+    public static long exeTime = 60 * 60 * 9; // second
 
     public static boolean oneSeed = false;  // T 代表仅使用初始seed，不删除也不增加 F 原始代码
     public static  boolean oneDirected = false; // T 代表只使用一个插入点 F 原始代码
