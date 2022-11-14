@@ -98,18 +98,18 @@ Project Name: HotspotTests-Java
 
 ### III. Getting Started
 
+We provide the source files and jar packages for the project. You can make changes in the source code, or just use the jar to execute the project directly. Please set the -help parameter to get our help document.
 
-
-### IIII. Directory description
+### IV. Directory description
 
 ```markdown
-├── 01JVMS				:  test subjects
+├── 01JVMS					:  test subjects
 ├── 02Benchmarks			:  origin benchmarks
 ├── 03results				:  difference report
-├── 04SynthesisHistory		        :  programs generated during synthsizing 
-├── DTJVM				:  Execution Phase Module
+├── 04SynthesisHistory  	:  programs generated during synthsizing 
+├── DTJVM					:  Execution Phase Module
 ├── JavaTailor				:  Synthesis Phase Module
-├── Main				:  Control Module
+├── Main					:  Control Module
 └── sootOutput				:  benchmarks for synthesized
 ```
 
