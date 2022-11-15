@@ -34,42 +34,39 @@ public class Main {
     /**
      * Here you can set up the project you want to test
      */
-
-    public static String projectName = "HotspotTests-Java";  // 提供种子文件的项目
-    public static boolean projectPreDefineFlag = true;  // 此项目是否使用预定义类
-    public static String mutationProviderProject = "HotspotTests-Java";  // 提供合成块文件的项目
-    public static boolean providerProjectPreDefineFlag = true;  // 此项目是否使用预定义类
-
-    public static boolean providerProjectAllDefineFlag = false;  // 此项目是否提取所有的可用类（当项目的application类过少时使用）
-    public static String packagePath = "out"+DTPlatform.FILE_SEPARATOR+"production"+DTPlatform.FILE_SEPARATOR+"HotspotIssue";  // packagePath + packageName 指向项目的可用类
-    public static String packageName = "Bug_triggering_input";
+    // Provide seed files for the project
+    public static String projectName = "HotspotTests-Java";
+    public static boolean projectPreDefineFlag = true;
+    // Provide ingredients for the project
+    public static String mutationProviderProject = "HotspotTests-Java";
+    public static boolean providerProjectPreDefineFlag = true;
+    // pre-define file name
+    public static String defineClassesPath = "testcases.txt";
 
     public static int useClustering = CodeClusterHelper.NO_CLUSTER;
     public static int selectMethod = SelectBlockHelper.RANDOM_SELECT;
-    public static boolean useVMOptions = false;
-    public static boolean addLoopFlag = false; // 添加循环体的方式 选择： all、none
     public static boolean checksum = true; // 是否使用checksum
 
-    public static boolean reshape = true;
-
-    public static long exeTime = 60 * 60 * 9; // second
-
-    public static boolean oneSeed = false;  // T 代表仅使用初始seed，不删除也不增加 F 原始代码
-    public static  boolean oneDirected = false; // T 代表只使用一个插入点 F 原始代码
-
-    public static boolean useTimeout = false;
+    public static long exeTime = 60 * 60 * 9;
 
     public static boolean covTest = false; //是否进行覆盖率测试
     public static String covJavaCmd = "/home/share/Fasttailor/jvmCov/openjdk/build/linux-x86_64-normal-server-release/jdk/bin/java"; //进行覆盖率测试的Java位置
 
-
-    public static String defineClassesPath = "testcases.txt";
     public static int randomSeed = 1;
     public static String timeStamp;
     public static List<ClassInfo> seeds;
     public static boolean crossProject = false;
-
-
+    //Todo:将这一部分放到一个函数当中
+    public static boolean providerProjectAllDefineFlag = false;  // 此项目是否提取所有的可用类（当项目的application类过少时使用）
+    public static String packagePath = "out"+DTPlatform.FILE_SEPARATOR+"production"+DTPlatform.FILE_SEPARATOR+"HotspotIssue";  // packagePath + packageName 指向项目的可用类
+    public static String packageName = "Bug_triggering_input";
+    //Todo:放到一个更方便拆卸的函数当中
+    public static boolean useVMOptions = false;
+    public static boolean addLoopFlag = false; // 添加循环体的方式 选择： all、none
+    //Todo:将其固定为一个函数
+    public static boolean reshape = true;
+    public static boolean oneSeed = false;  // T 代表仅使用初始seed，不删除也不增加 F 原始代码
+    public static  boolean oneDirected = false; // T 代表只使用一个插入点 F 原始代码
     /**
      * Here we go！
      * @param args
@@ -642,27 +639,17 @@ public class Main {
                     }
                 }
                 if (CFMExecutor.getInstance().isDiffFound()){
-                    if(useTimeout || (!JvmOutput.timeoutFlag)){
-//                        if (JvmOutput.timeoutFlag){
-//                            ingredient.diffFoundTimesDecrease();
-//                        }
+                    if(!JvmOutput.timeoutFlag){
                         ingredient.diffFoundTimesIncrease();
                         sumDiffFindCount++;
-                        DTGlobal.getInsertLogger().info("插入如下ingredients，生成的"+newMutateClass.getClassName()+"发现了差异");
-                        for(String s:DTGlobal.getInsertInfo()){
-                            DTGlobal.getInsertLogger().info(s);
-                        }
+
                         DTGlobal.getInsertInfo().clear();
-                        DTGlobal.getSelectLogger().info("发现了差异\n");
 
                         JvmOutput.timeoutFlag = false;
                         String diffClassFolder = diffClassPath + DTPlatform.FILE_SEPARATOR + seed.getOriginClassName();
                         MainHelper.createFolderIfNotExist(diffClassFolder);
                         newMutateClass.saveSootClassToTargetPath(seedClass, diffClassFolder + DTPlatform.FILE_SEPARATOR + newMutateClass.getClassName());
                     }
-                }else{
-                    DTGlobal.getSelectLogger().info("没有发现差异\n");
-                    DTGlobal.getInsertInfo().clear();
                 }
             }
             Scene.v().removeClass(seedClass);
