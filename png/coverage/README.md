@@ -1,4 +1,4 @@
-![image-20221223170627350](..\coverage for each benchmark.png)
+![image-20221223170627350](..\coverage.png)
 
 <center> Figure 1: Line coverage trend on benchmark P1-P8<center>
 
