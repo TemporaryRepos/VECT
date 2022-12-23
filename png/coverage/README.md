@@ -1,6 +1,6 @@
 ![image-20221223170627350](../coverage.png)
 
-<center> Figure 1: Line coverage trend on benchmark P1-P8<center>
+<p align="center">Figure 1: Line coverage trend on benchmark P1-P8<p>
 
 To better answer the RQ3 in VECT, we further analyzed the trend of line coverage for each benchmark. The specific results are shown in Figure 1, where the results of sub figures (a) - (h) correspond to benchmark P1 - P8 respectively and the x-axis of sub figure represents the testing time while the y-axis represents the achieved line coverage.
 
